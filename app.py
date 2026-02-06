@@ -9,10 +9,17 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 app.app_context().push()
 
+with app.app_context():
+    db.create_all()
+
 class Employee (db.Model):
     sno = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(200), nullable = False)
     email = db.Column(db.String(200), nullable = False)
+
+@app.route("/health")
+def health():
+    return "OK", 200
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
