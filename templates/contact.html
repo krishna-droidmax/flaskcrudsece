@@ -2,12 +2,50 @@
 
 {% block body %}
 <div class="container py-4">
-    <h1 class="mb-3">Contact</h1>
-    <p class="text-muted">Have questions or feedback? Reach out using the details below.</p>
-    <ul class="list-unstyled">
-        <li><strong>Email:</strong> support@example.com</li>
-        <li><strong>Phone:</strong> +1 (555) 123-4567</li>
-        <li><strong>Address:</strong> 123 Main Street, City, Country</li>
-    </ul>
+    <div class="row g-4 align-items-stretch">
+        <div class="col-12 col-lg-6">
+            <div class="p-4 bg-light rounded-3 h-100">
+                <h1 class="mb-2">Contact</h1>
+                <p class="text-muted mb-4">Have questions or feedback? Were here to help.</p>
+                <div class="d-flex flex-column gap-3">
+                    <div>
+                        <div class="fw-semibold">Email</div>
+                        <a class="text-decoration-none" href="mailto:support@example.com">support@example.com</a>
+                    </div>
+                    <div>
+                        <div class="fw-semibold">Phone</div>
+                        <a class="text-decoration-none" href="tel:+15551234567">+1 (555) 123-4567</a>
+                    </div>
+                    <div>
+                        <div class="fw-semibold">Address</div>
+                        <div>123 Main Street, City, Country</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Send a message</h5>
+                    <p class="card-text text-muted">We typically reply within 24 hours.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Your name</label>
+                            <input type="text" class="form-control" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" rows="4" placeholder="How can we help?"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock body %}
