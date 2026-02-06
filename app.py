@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-import os
 
 app=Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///employee.db"
@@ -9,17 +8,10 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 app.app_context().push()
 
-with app.app_context():
-    db.create_all()
-
 class Employee (db.Model):
     sno = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(200), nullable = False)
     email = db.Column(db.String(200), nullable = False)
-
-@app.route("/health")
-def health():
-    return "OK", 200
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -35,6 +27,10 @@ def home():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 @app.route("/delete/<int:sno>")
 def delete(sno):
@@ -59,5 +55,4 @@ def update(sno):
     return render_template("update.html", employee=employee)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(debug=True)
